@@ -47,7 +47,7 @@ pipeline {
             }
             steps {
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
+                    kubeconfigId: 'K8Smandarkrajpathak',
                     configs: 'railwaytt-kube-canary.yml',
                     enableConfigSubstitution: true
                 )
@@ -64,14 +64,14 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
+                    kubeconfigId: 'K8Smandarkrajpathak',
                     configs: 'railwaytt-kube-canary.yml',
                     enableConfigSubstitution: true
                 )
                 sh 'kubectl delete service railway-timetable-service-canary'
                 sh 'kubectl delete deployment railway-timetable-deployment-canary'
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
+                    kubeconfigId: 'K8Smandarkrajpathak',
                     configs: 'railwaytt-kube.yml',
                     enableConfigSubstitution: true
                 )
